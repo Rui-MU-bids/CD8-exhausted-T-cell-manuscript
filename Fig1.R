@@ -105,7 +105,18 @@ p2 <- ggplot(data, aes(fill = Cluster, y = Count, x = Cancer)) +
   )
 ggsave(filename = "cancer_Cbar.pdf", plot = p2, device = "pdf", width = 8, height = 6)  
 
+#FigS1E-F
+eff <- c("RUNX3","KLRG1","FAS","SPN","CD44","OSR2","CXCR1")
+plot <- DotPlot(exhaustedT, features = eff, dot.scale = 10, scale = F, cols = c("lightgrey", "#bd7fef"),scale.min = 0, scale.max = 100)+coord_flip()+scale_color_gradientn(colors = c("lightgrey", "#bd7fef"), limits = c(0, 5))
+ggsave("eff.pdf", plot = plot, width = 6, height = 5, dpi = 300)
 
+Development <- c("CXCR5","SLAMF6","PRDM1",'CD69','CD101')
+plot <- DotPlot(exhaustedT, features = Development, dot.scale = 8, scale = T, cols = c("lightgrey", "#bd7fef"))+coord_flip()
+ggsave("develop.pdf", plot = plot, width = 6, height = 5, dpi = 300)
+
+
+
+#Fig1B
 library(ggplot2)
 library(ggthem)
 data <- readxl::read_excel("Exhausted T cell percenrage.xlsx")
