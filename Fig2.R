@@ -1,9 +1,9 @@
 #Fig2A
-subtypes <- c('CCL3',"CCL4","KLRD1","EGR2","IFNG",
-              "COL1A1","COL6A1","CCN1","CCN2",
-              "IL7R","TCF7","CCR7","SELL",
-              "HSPA1A","HSPA1B","HSPA6","DNAJA1","DNAJB1",
-              "IFIT1","IFIT2","IFIT3","OAS1","OAS3","ISG15")
+subtypes <- c('CCL3',"CCL4","CXCL13","KLRD1","KIR2DL4","EGR2","IFNG","IGKV1-5","GNLY","LAT2",
+              "COL1A1","COL6A1","CCN1","CCN2","CXCL14","CAV1","FN1","MMP9","CTSK","PCOLCE",
+              "IL7R","TCF7","CCR7","SELL","S1PR1","CD28",
+              "HSPA1A","HSPA1B","HSPA6","HSPA8","HSPH1","HSPD1","DNAJA1","DNAJB1","SERPINH1","BAG3",
+              "IFIT1","IFIT2","IFIT3","IFI27","OAS1","OAS3","MX1","MX2","HERC5","ISG15"
 DefaultAssay(exhaustedT) <- 'SCT'
 avg_exp <- AverageExpression(exhaustedT, assays = "SCT", features = subtypes, group.by = 'humanC', return.seurat = T)
 
@@ -23,7 +23,7 @@ DoHeatmap(
   )
 
 #Fig2B
-Exhaustion <- c("ENTPD1","HAVCR2","CTLA4","LAG3","PDCD1","TOX","TIGIT")
+Exhaustion <- c("KLF4","ELF4","PRDM1","ID2","JUN","TBX21","TCF7","CCR5","CST7","NKG7","CD28","CD27","GZMK","VSIR","TNFRSF18",'TNFRSF9','TNFRSF4','CD226','EOMES','ITGAE','ALCAM','BTLA','CD244','ENTPD1','HAVCR2','CTLA4','LAG3','TOX','TIGIT','PDCD1')
 plot <- DotPlot(exhaustedT, features = Exhaustion, dot.scale = 8, scale = T, cols = c("lightgrey", "#bd7fef"))+coord_flip()
 ggsave("exh_markers.pdf", plot = plot, width = 5, height = 2.5, dpi = 300)
 
